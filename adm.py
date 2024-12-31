@@ -5,9 +5,12 @@ import time
 import subprocess
 from datetime import datetime
 import threading
+import os
+from dotenv import load_dotenv, dotenv_values
 
+load_dotenv() 
 # Connect to MongoDB
-myclient = MongoClient('mongodb+srv://jonway:PxPwYzONXRcO1hxA@luci-1.nwqlw4u.mongodb.net/Risk_Manager')
+myclient = MongoClient(os.getenv("MONGO_CLIENT"))
 mydb = myclient["Risk_Manager"]
 elementsCol = mydb["elements"]
 instancesCol = mydb["instances"]
